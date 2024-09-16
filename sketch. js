@@ -1,0 +1,53 @@
+let campoIdade;
+let campoFantasia;
+let campoAventura;
+
+function setup() {
+  createCanvas(800, 400);
+  createElement("h2", "Recomendador de filmes");
+  createSpan("Sua idade:");
+  campoIdade = createInput("5");
+  campoFantasia = createCheckbox("Gosta de fantasia?");
+  campoAventura = createCheckbox("Gosta de aventura?");
+}
+
+function draw() {
+  background("#EE8DAE8E");
+  let idade = campoIdade.value();
+  let gostaDeFantasia = campoFantasia.checked();
+  let gostaDeAventura = campoAventura.checked();
+  let recomendacao = geraRecomendacao(idade, gostaDeFantasia, gostaDeAventura);
+
+  fill(color(0, 0, 0));
+  textAlign(CENTER, CENTER);
+  textSize(50);
+  text(recomendacao, width / 2, height / 2);
+}
+
+function geraRecomendacao(idade, gostaDeFantasia, gostaDeAventura) {
+  if (idade >= 10) {
+    if (idade >= 14) {
+    return "Red: Crescer é uma Fera "
+    } else {
+      if (idade >= 12) {
+        if(gostaDeFantasia || gostaDeAventura) {
+          return "O Dragão do Meu Pai";          
+        } else{
+         return "Gato de Botas: O Último Desejo ";
+        }
+      } else {
+        if (gostaDeFantasia) {
+          return "Dois Irmãos: Uma Jornada Fantástica";
+        } else {
+          return "Divertida Mente ";
+        }
+      }
+    }
+  } else {
+    if (gostaDeFantasia) {
+      return "Viva - A Vida é uma Festa ";
+    } else {
+      return "Viva - A Vida é uma Festa ";
+    }
+  }
+}
